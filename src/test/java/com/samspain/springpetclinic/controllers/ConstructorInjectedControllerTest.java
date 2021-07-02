@@ -6,19 +6,17 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class PropertyInjectedControllerTest {
+class ConstructorInjectedControllerTest {
 
-    PropertyInjectedController propertyInjectedController;
+    ConstructorInjectedController constructorInjectedController;
 
     @BeforeEach
     void setUp() {
-        propertyInjectedController = new PropertyInjectedController();
-        propertyInjectedController.greetingService = new EnglishGreetingService();
+        constructorInjectedController = new ConstructorInjectedController(new EnglishGreetingService());
     }
 
     @Test
     void getGreeting() {
-        assertEquals(propertyInjectedController.getGreeting(), "Hello world");
+        assertEquals(constructorInjectedController.getGreeting(), "Hello world");
     }
-
 }
